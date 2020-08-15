@@ -3,7 +3,7 @@
 node {
 
       stage('checkout') { // for display purposes
-        checkout scm
+        git url: 'https://github.com/SimranDembla/user_login_and_register.git'
     }
     stage('build') {
         echo "Hello World!"
