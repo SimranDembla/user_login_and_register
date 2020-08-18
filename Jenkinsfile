@@ -1,6 +1,4 @@
-#!groovy
-
-node {
+pipeline {
 
 environment { 
 
@@ -12,7 +10,11 @@ environment {
 
     }
       stage('checkout') { // for display purposes
-        checkout scm
+	steps {
+		script {
+        		checkout scm
+		}
+	}
     }
    
 	stage('Building our image') { 
