@@ -19,6 +19,7 @@ pipeline {
             steps { 
 
                 checkout scm
+		}
 	}
 
         stage('Building our image') { 
@@ -52,4 +53,6 @@ pipeline {
             }
 
         } 
+  }
 
+}
