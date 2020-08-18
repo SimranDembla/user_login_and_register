@@ -52,7 +52,17 @@ pipeline {
 
             }
 
-        } 
+        }
+	stage('Pulling image locally') {
+		
+		steps {
+		
+		  script {
+	            
+                     sh "docker pull d17bc/sample_image:$BUILD_NUMBER"
+			}
+		}
+	}
   }
 
 }
