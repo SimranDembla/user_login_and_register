@@ -7,8 +7,9 @@ node {
     }
     stage('build') {
         echo "Hello World!"
-        sh "docker build -t dnj16aug:20 ."
-        sh "docker run -d -p 8000:8000 dnj16aug:20"
+        sh "docker build -t testing_image:latest ."
+        sh "docker run -d -p 8000:8000 testing_image:latest"
+	sh "docker pull d17bc/testing_image"
     }
     stage('Results') {
         echo 'ty'
