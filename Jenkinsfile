@@ -2,15 +2,38 @@
 
 node {
 
+environment { 
+
+        registry = "d17bc/sample_image" 
+
+        registryCredential = 'sample_id' 
+
+        dockerImage = '' 
+
+    }
       stage('checkout') { // for display purposes
-	checkout scm
+        checkout scm
     }
-    stage('build') {
-        echo "Hello World!"
-        sh "docker build -t testing_image:latest ."
-        sh "docker run -d -p 8000:8000 testing_image:latest"
-	sh "docker pull d17bc/testing_image"
-    }
+   
+	stage('Building our image') { 
+            steps { 
+
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
+        }
+		
+	stage('Deploy our image') { 
+
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
     stage('Results') {
         echo 'ty'
     }
