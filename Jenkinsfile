@@ -53,13 +53,14 @@ pipeline {
             }
 
         }
-	stage('Pulling image locally') {
+	stage('Pulling image locally' and running) {
 		
 		steps {
 		
 		  script {
 	            
                      sh "docker pull d17bc/sample_image:$BUILD_NUMBER"
+		     sh "docker run -d -p 8000:8000 d17bc/sample_image:$BUILD_NUMBER"
 			}
 		}
 	}
