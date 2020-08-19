@@ -53,7 +53,7 @@ pipeline {
             }
 
         }
-	stage('Pulling image locally' and running) {
+	stage('Pulling image locally and running') {
 		
 		steps {
 		
